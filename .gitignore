@@ -12,3 +12,10 @@ logs
 results
 
 npm-debug.log
+*.sublime-*
+
+node_modules/
+.monitor
+config/config.js
+config/imager.js
+Makefile
