@@ -7,7 +7,6 @@ var mongoose = require('mongoose')
   , LeagueSchema = require('./league.js')
 
 
-
 /**
  * Team Schema
  */
@@ -51,7 +50,5 @@ TeamSchema.statics = {
   }
 
 }
-
-
 
 mongoose.model('Team', TeamSchema)
