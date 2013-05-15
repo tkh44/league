@@ -4,6 +4,13 @@ block main
   h1 Teams
 
 block content
-  each team in teams
-    .team
-      h1=team.name
+  .row
+    .span12
+      a.btn.btn-primary(href='teams/new') Add Team
+  .row
+    .span9
+      each team in teams
+        .row
+          .span12
+            h1=team.name  
+  

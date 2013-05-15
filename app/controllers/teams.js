@@ -1,29 +1,36 @@
 /**
  * Module dependencies.
  */
-
 var mongoose = require('mongoose')
   , async = require('async')
   , Team = mongoose.model('Team')
   , _ = require('underscore')
 
 /**
- * Find article by id
+ * Find team by id
  */
-
 exports.team = function(req, res, next, id){
   Team.load(id, function (err, team) {
     if (err) return next(err)
-    if (!article) return next(new Error('Failed to load team ' + id))
+    if (!team) return next(new Error('Failed to load team ' + id))
     req.team = team
     next()
   })
 }
 
 /**
+ * View an team
+ */
+exports.show = function(req, res){
+  res.render('teams/show', {
+    title: req.team.title,
+    team: req.team
+  })
+}
+
+/**
  * New team
  */
-
 exports.new = function(req, res){
   res.render('teams/new', {
     title: 'New Team',
@@ -34,7 +41,6 @@ exports.new = function(req, res){
 /**
  * Create a team
  */
-
 exports.create = function (req, res) {
   var team = new Team(req.body)
   team.user = req.user
@@ -48,7 +54,7 @@ exports.create = function (req, res) {
       })
     }
     else {
-      res.redirect('/teams/'+team._id)
+      res.redirect('teams')
     }
   });
 }
@@ -56,7 +62,6 @@ exports.create = function (req, res) {
 /**
  * List of Teams
  */
-
 exports.index = function(req, res){
   var options = {}
 

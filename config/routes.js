@@ -39,15 +39,21 @@ module.exports = function (app, passport, auth) {
   app.get('/teams', teams.index)
   app.get('/teams/new', teams.new)
   app.post('/teams', teams.create)
-  // app.get('/teams/:teamId', teams.show)
+  app.get('/teams/:teamId', teams.show)
   // app.get('/teams/:teamId/edit', auth.requiresLogin, auth.team.hasAuthorization, teams.edit)
   // app.put('/teams/:teamId', auth.requiresLogin, auth.team.hasAuthorization, teams.update)
   // app.del('/teams/:teamId', auth.requiresLogin, auth.team.hasAuthorization, teams.destroy)
 
   app.param('teamId', teams.team)
 
+  // league routes
+  var leagues = require('../app/controllers/leagues')
+  app.get('/leagues', leagues.index)
+  
+  app.param('leagueId', leagues.league)
+
   // home route
-  app.get('/', articles.index)
+  app.get('/', teams.index)
 
   // comment routes
   var comments = require('../app/controllers/comments')

@@ -20,4 +20,41 @@ var LeagueSchema = new Schema({
   createdAt  : {type : Date, default : Date.now}
 })
 
+LeagueSchema.statics = {
+
+  /**
+   * Find team by id
+   *
+   * @param {ObjectId} id
+   * @param {Function} cb
+   * @api private
+   */
+
+  load: function (id, cb) {
+    this.findOne({ _id : id })
+      .populate('organization')
+      .populate('teams')
+      .exec(cb)
+  },
+
+  /**
+   * List teams
+   *
+   * @param {Object} options
+   * @param {Function} cb
+   * @api private
+   */
+
+  list: function (options, cb) {
+    var criteria = options.criteria || {}
+
+    this.find(criteria)
+      .populate('organization')
+      .populate('teams')
+      .sort({'createdAt': -1}) // sort by date
+      .exec(cb)
+  }
+
+}
+
 mongoose.model('League', LeagueSchema)

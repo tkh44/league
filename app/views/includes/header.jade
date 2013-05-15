@@ -1,15 +1,18 @@
 
 header#header
-  .navbar.navbar-fixed-top(role='navigation')
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
     .navbar-inner
       .container
-        a.brand(href='/') League
         .nav-collapse.collapse
           ul.nav
             li
-              a(href='/teams', title="article listing") Teams
+              a(href='/', title="Home") Home
             li
-              a(href="/teams/new", title="new article") New
+              a(href='/teams', title="team listing") Teams
+            li
+              a(href="/teams/new", title="new team") New
+            li
+              a(href='/leagues', title="league listing") Leagues
           ul.nav.pull-right
             if (req.isAuthenticated())
               li
