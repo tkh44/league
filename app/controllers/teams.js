@@ -12,12 +12,45 @@ var mongoose = require('mongoose')
  */
 
 exports.team = function(req, res, next, id){
-  Team.load(id, function (err, article) {
+  Team.load(id, function (err, team) {
     if (err) return next(err)
     if (!article) return next(new Error('Failed to load team ' + id))
     req.team = team
     next()
   })
+}
+
+/**
+ * New team
+ */
+
+exports.new = function(req, res){
+  res.render('teams/new', {
+    title: 'New Team',
+    team: new Team({})
+  })
+}
+
+/**
+ * Create a team
+ */
+
+exports.create = function (req, res) {
+  var team = new Team(req.body)
+  team.user = req.user
+  
+  team.save( function(err) {
+    if (err) {
+      res.render('teams/new', {
+        title: 'New Team',
+        team: team,
+        errors: err.errors
+      })
+    }
+    else {
+      res.redirect('/teams/'+team._id)
+    }
+  });
 }
 
 /**

@@ -12,7 +12,7 @@ var mongoose = require('mongoose')
  */
 
 var TeamSchema = new Schema({
-  name: {type : String, default : 'Team '},
+  name: {type : String, default : 'Team'},
   leagues: [LeagueSchema]
 })
 

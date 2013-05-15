@@ -41,6 +41,7 @@ exports.new = function(req, res){
 
 exports.create = function (req, res) {
   var article = new Article(req.body)
+  console.log(req.body);
   article.user = req.user
 
   article.uploadAndSave(req.files.image, function (err) {
