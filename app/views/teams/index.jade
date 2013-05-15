@@ -1,0 +1,9 @@
+extends ../layouts/default
+
+block main
+  h1 Teams
+
+block content
+  each team in teams
+    .team
+      h1=team.name

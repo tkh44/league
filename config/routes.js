@@ -34,6 +34,18 @@ module.exports = function (app, passport, auth) {
 
   app.param('id', articles.article)
 
+  // team routes
+  var teams = require('../app/controllers/teams')
+  app.get('/teams', teams.index)
+  // app.get('/teams/new', teams.new)
+  // app.post('/teams', teams.create)
+  // app.get('/teams/:teamId', teams.show)
+  // app.get('/teams/:teamId/edit', auth.requiresLogin, auth.team.hasAuthorization, teams.edit)
+  // app.put('/teams/:teamId', auth.requiresLogin, auth.team.hasAuthorization, teams.update)
+  // app.del('/teams/:teamId', auth.requiresLogin, auth.team.hasAuthorization, teams.destroy)
+
+  app.param('teamId', teams.team)
+
   // home route
   app.get('/', articles.index)
 

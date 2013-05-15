@@ -1,0 +1,53 @@
+{
+    //--------------------------------------------------------------------
+    // Enforcing Options:
+    //--------------------------------------------------------------------
+    // These options are set to enforce key rules. If you need to make
+    // exceptions to these rules in code, you must provide a reason in
+    // the code for why you think the exception is necessary.
+    //--------------------------------------------------------------------
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noempty": true,
+    "nonew": true,
+    "undef": true,
+    "unused": true,
+    "trailing": true,
+    //REBEL!!!!
+    "asi": true,
+    "laxbreak": true,
+    "laxcomma": true,
+    "node": true,
+    "es5": true,
+
+    //--------------------------------------------------------------------
+    // Relaxing Options:
+    //--------------------------------------------------------------------
+    // These option suppress specific rules. The currently suppresses rules
+    // are very limited. If you want to use one of these suppressions in
+    // your specific code, you must include an explanation of the reason
+    // why you want to suppress a rule.
+    //--------------------------------------------------------------------
+    "regexdash": true,  // ????
+    "sub": true,        // To support localization string mapping primarily
+
+    //--------------------------------------------------------------------
+    // Globals:
+    //--------------------------------------------------------------------
+    // These options define global variables that are exposed by various
+    // JavaScript libraries and hosting environments.
+    //--------------------------------------------------------------------
+    "browser": true,
+
+    //--------------------------------------------------------------------
+    // Formatting rules
+    //--------------------------------------------------------------------
+    // Provides uniform formatting rules.
+    //--------------------------------------------------------------------
+    "indent": 2,
+    "quotmark": "single"
+}
